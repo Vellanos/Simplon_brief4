@@ -1,0 +1,47 @@
+* {
+    overflow: hidden;
+    font-family: 'Bebas Neue', sans-serif;
+    color: red;
+}
+
+body {
+    background-color: black;
+    display: grid;
+
+    place-items: center;
+    height: 100vh;
+}
+
+button {
+  background-color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.buttonBlancRouge {
+    color: red;
+    background-color: #fff;
+    width: max-content;
+    padding: 1% 5%;
+    font-size: 25px;
+    
+}
+
+.loading{
+    opacity: 0;
+    animation: fadein 1s forwards;
+    
+}
+
+@keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+}
+
+.cancelLoading {
+  display: none;
+}

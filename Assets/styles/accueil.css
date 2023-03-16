@@ -1,0 +1,16 @@
+.accueilConteneur {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+}
+
+.imgNetflix {
+   width: 300px;
+}
+
+h1 {
+    font-size: 60px;
+}
+
+
