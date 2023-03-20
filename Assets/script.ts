@@ -9,6 +9,7 @@ const bouton_rep_2:Element | null = document.querySelector("#buttonReponse2")
 const bouton_rep_3:Element | null = document.querySelector("#buttonReponse3")
 const bouton_rep_4:Element | null = document.querySelector("#buttonReponse4")
 const bouton_next:Element | null = document.querySelector("#leNextId")
+const bouton_next_2:Element | null = document.querySelector("#leNextId > button")
 const laReponse:Element | null = document.querySelector("#laReponseId")
 const leCommentaire:Element | null = document.querySelector("#leCommentaireId")
 let paragraphe_reponse:HTMLCollectionOf<Element>= document.getElementsByClassName('parahide')
@@ -16,191 +17,6 @@ let paragraphe_reponse:HTMLCollectionOf<Element>= document.getElementsByClassNam
 let leCompteur: number = 0;
 let reponse: string = '';
 let score: number = 0;
-
-if (bouton_accueil) {
-    bouton_accueil.addEventListener('click', startQuizz)
-}
-if (bouton_rep_1) {
-    bouton_rep_1.addEventListener('click', fReponse1)
-}
-if (bouton_rep_2) {
-    bouton_rep_2.addEventListener('click', fReponse2)
-}
-if (bouton_rep_3) {
-    bouton_rep_3.addEventListener('click', fReponse3)
-}
-if (bouton_rep_4) {
-    bouton_rep_4.addEventListener('click', fReponse4)
-}
-if (bouton_next) {
-    bouton_next.addEventListener('click', fNext)
-}
-
-function fReponse1 () {
-    laQuestion.textContent = "La réponse est : "
-    laReponse.textContent = reponse
-
-    if (question[leCompteur].result1 == true){
-        score = score + 1
-        leCommentaire.textContent = "Nice ! C'est la bonne réponse"
-    } else {
-        leCommentaire.textContent = "Dommage !"
-    }
-
-    wrapperreponse.classList.add('hide')
-    wrapperreponse.classList.remove('wrapperButtonReponse')
-
-    for (let i = paragraphe_reponse.length-1;i > -1;){
-        paragraphe_reponse[i].classList.add('parashow')
-        paragraphe_reponse[i].classList.remove('parahide')
-        i = i-1
-    }
-    paragraphe_reponse = document.getElementsByClassName('parashow')
-    
-
-}
-
-//function test(result) {
-//    const x = question[leCompteur]
-//}
-
-
-function fReponse2 () {
-    laQuestion.textContent = "La réponse est : "
-    laReponse.textContent = reponse
-
-    if (question[leCompteur].result2 == true){
-        score = score + 1
-        leCommentaire.textContent = "Nice ! C'est la bonne réponse"
-    } else {
-        leCommentaire.textContent = "Dommage !"
-    }
-
-    wrapperreponse.classList.add('hide')
-    wrapperreponse.classList.remove('wrapperButtonReponse')
-
-    for (let i = paragraphe_reponse.length-1;i > -1;){
-        paragraphe_reponse[i].classList.add('parashow')
-        paragraphe_reponse[i].classList.remove('parahide')
-        i = i-1
-    }
-    paragraphe_reponse = document.getElementsByClassName('parashow')
-    
-}
-
-function fReponse3 () {
-    laQuestion.textContent = "La réponse est : "
-    laReponse.textContent = reponse
-
-    if (question[leCompteur].result3 == true){
-        score = score + 1
-        leCommentaire.textContent = "Nice ! C'est la bonne réponse"
-    } else {
-        leCommentaire.textContent = "Dommage !"
-    }
-
-    wrapperreponse.classList.add('hide')
-    wrapperreponse.classList.remove('wrapperButtonReponse')
-
-    for (let i = paragraphe_reponse.length-1;i > -1;){
-        paragraphe_reponse[i].classList.add('parashow')
-        paragraphe_reponse[i].classList.remove('parahide')
-        i = i-1
-    }
-    paragraphe_reponse = document.getElementsByClassName('parashow')
-}
-
-function fReponse4 () {
-    laQuestion.textContent = "La réponse est : "
-    laReponse.textContent = reponse
-
-    if (question[leCompteur].result4 == true){
-        score = score + 1
-        leCommentaire.textContent = "Nice ! C'est la bonne réponse"
-    } else {
-        leCommentaire.textContent = "Dommage !"
-    }
-
-    wrapperreponse.classList.add('hide')
-    wrapperreponse.classList.remove('wrapperButtonReponse')
-
-    for (let i = paragraphe_reponse.length-1;i > -1;){
-        paragraphe_reponse[i].classList.add('parashow')
-        paragraphe_reponse[i].classList.remove('parahide')
-        i = i-1
-    }
-    paragraphe_reponse = document.getElementsByClassName('parashow')
-    
-}
-
-function startQuizz() {
-    accueil.classList.remove('loading')
-    accueil.classList.add('cancelLoading')
-
-    questionBloc.classList.remove('hide')
-    questionBloc.classList.add('questionConteneur')
-
-    wrapperreponse.classList.remove('hide')
-    wrapperreponse.classList.add('wrapperButtonReponse')
-
-    leCompteur = 0
-    score = 0
-
-    // Trouver la bonne réponse
-    if (question[leCompteur].result1 == true){
-        reponse = question[leCompteur].reponse1
-    } else if (question[leCompteur].result2 == true){
-        reponse = question[leCompteur].reponse2
-    } else if (question[leCompteur].result3 == true){
-        reponse = question[leCompteur].reponse3
-    } else if (question[leCompteur].result4 == true){
-        reponse = question[leCompteur].reponse4
-    }
-
-    // Afficher les différents éléments
-    compteurQuestion.textContent = leCompteur + 1 + "/ " + question.length
-    laQuestion.textContent = question[leCompteur].intitule
-    bouton_rep_1.textContent = question[leCompteur].reponse1
-    bouton_rep_2.textContent = question[leCompteur].reponse2
-    bouton_rep_3.textContent = question[leCompteur].reponse3
-    bouton_rep_4.textContent = question[leCompteur].reponse4
-
-}
-
-function fNext() {
-    leCompteur = leCompteur + 1
-    // Trouver la bonne réponse avant de cliquer sur les boutons
-    if (question[leCompteur].result1 == true){
-        reponse = question[leCompteur].reponse1
-    } else if (question[leCompteur].result2 == true){
-        reponse = question[leCompteur].reponse2
-    } else if (question[leCompteur].result3 == true){
-        reponse = question[leCompteur].reponse3
-    } else if (question[leCompteur].result4 == true){
-        reponse = question[leCompteur].reponse4
-    }
-    //Afficher les différents éléments
-    compteurQuestion.textContent = leCompteur + 1 + "/ " + question.length
-    laQuestion.textContent = question[leCompteur].intitule
-    bouton_rep_1.textContent = question[leCompteur].reponse1
-    bouton_rep_2.textContent = question[leCompteur].reponse2
-    bouton_rep_3.textContent = question[leCompteur].reponse3
-    bouton_rep_4.textContent = question[leCompteur].reponse4
-
-    wrapperreponse.classList.remove('hide')
-    wrapperreponse.classList.add('wrapperButtonReponse')
-
-    for (let i = paragraphe_reponse.length-1;i > -1;){
-        paragraphe_reponse[i].classList.add('parahide')
-        paragraphe_reponse[i].classList.remove('parashow')
-        
-        i = i-1
-    }
-    paragraphe_reponse = document.getElementsByClassName('parahide')
-
-    console.log(score)
-    
-}
 
 interface quizz {
     intitule: string;
@@ -271,3 +87,217 @@ const question: quizz[] = [
         result4:true
     }
 ]
+
+
+if (bouton_accueil) {
+    bouton_accueil.addEventListener('click', startQuizz)
+}
+if (bouton_rep_1) {
+    bouton_rep_1.addEventListener('click', fReponse1)
+}
+if (bouton_rep_2) {
+    bouton_rep_2.addEventListener('click', fReponse2)
+}
+if (bouton_rep_3) {
+    bouton_rep_3.addEventListener('click', fReponse3)
+}
+if (bouton_rep_4) {
+    bouton_rep_4.addEventListener('click', fReponse4)
+}
+if (bouton_next && leCompteur <= question.length) {
+    bouton_next.addEventListener('click', fNext)
+} 
+
+
+function fReponse1 () {
+    laQuestion.textContent = "La réponse est : "
+    laReponse.textContent = reponse
+
+    if (question[leCompteur].result1 == true){
+        score = score + 1
+        leCommentaire.textContent = "Nice ! C'est la bonne réponse"
+    } else {
+        leCommentaire.textContent = "Dommage !"
+    }
+
+    wrapperreponse.classList.add('hide')
+    wrapperreponse.classList.remove('wrapperButtonReponse')
+
+    for (let i = paragraphe_reponse.length-1;i > -1;){
+        paragraphe_reponse[i].classList.add('parashow')
+        paragraphe_reponse[i].classList.remove('parahide')
+        i = i-1
+    }
+    paragraphe_reponse = document.getElementsByClassName('parashow')
+    
+
+}
+
+function fReponse2 () {
+    laQuestion.textContent = "La réponse est : "
+    laReponse.textContent = reponse
+
+    if (question[leCompteur].result2 == true){
+        score = score + 1
+        leCommentaire.textContent = "Nice ! C'est la bonne réponse"
+    } else {
+        leCommentaire.textContent = "Dommage !"
+    }
+
+    wrapperreponse.classList.add('hide')
+    wrapperreponse.classList.remove('wrapperButtonReponse')
+
+    for (let i = paragraphe_reponse.length-1;i > -1;){
+        paragraphe_reponse[i].classList.add('parashow')
+        paragraphe_reponse[i].classList.remove('parahide')
+        i = i-1
+    }
+    paragraphe_reponse = document.getElementsByClassName('parashow')
+    
+}
+
+function fReponse3 () {
+    laQuestion.textContent = "La réponse est : "
+    laReponse.textContent = reponse
+
+    if (question[leCompteur].result3 == true){
+        score = score + 1
+        leCommentaire.textContent = "Nice ! C'est la bonne réponse"
+    } else {
+        leCommentaire.textContent = "Dommage !"
+    }
+
+    wrapperreponse.classList.add('hide')
+    wrapperreponse.classList.remove('wrapperButtonReponse')
+
+    for (let i = paragraphe_reponse.length-1;i > -1;){
+        paragraphe_reponse[i].classList.add('parashow')
+        paragraphe_reponse[i].classList.remove('parahide')
+        i = i-1
+    }
+    paragraphe_reponse = document.getElementsByClassName('parashow')
+}
+
+function fReponse4 () {
+    laQuestion.textContent = "La réponse est : "
+    laReponse.textContent = reponse
+
+    if (question[leCompteur].result4 == true){
+        score = score + 1
+        leCommentaire.textContent = "Nice ! C'est la bonne réponse"
+    } else {
+        leCommentaire.textContent = "Dommage !"
+    }
+
+    wrapperreponse.classList.add('hide')
+    wrapperreponse.classList.remove('wrapperButtonReponse')
+
+    for (let i = paragraphe_reponse.length-1;i > -1;){
+        paragraphe_reponse[i].classList.add('parashow')
+        paragraphe_reponse[i].classList.remove('parahide')
+        i = i-1
+    }
+    paragraphe_reponse = document.getElementsByClassName('parashow')
+}
+
+function startQuizz() {
+    accueil.classList.remove('loading')
+    accueil.classList.add('cancelLoading')
+
+    questionBloc.classList.remove('hide')
+    questionBloc.classList.add('questionConteneur')
+
+    wrapperreponse.classList.remove('hide')
+    wrapperreponse.classList.add('wrapperButtonReponse')
+
+    leCompteur = 0
+    score = 0
+
+    // Trouver la bonne réponse
+    if (question[leCompteur].result1 == true){
+        reponse = question[leCompteur].reponse1
+    } else if (question[leCompteur].result2 == true){
+        reponse = question[leCompteur].reponse2
+    } else if (question[leCompteur].result3 == true){
+        reponse = question[leCompteur].reponse3
+    } else if (question[leCompteur].result4 == true){
+        reponse = question[leCompteur].reponse4
+    }
+
+    // Afficher les différents éléments
+    compteurQuestion.textContent = leCompteur + 1 + "/ " + question.length
+    laQuestion.textContent = question[leCompteur].intitule
+    bouton_rep_1.textContent = question[leCompteur].reponse1
+    bouton_rep_2.textContent = question[leCompteur].reponse2
+    bouton_rep_3.textContent = question[leCompteur].reponse3
+    bouton_rep_4.textContent = question[leCompteur].reponse4
+
+}
+
+function fNext() {
+
+    leCompteur = leCompteur + 1
+    console.log("test Next")
+    console.log(leCompteur)
+
+
+    if (leCompteur < question.length) {
+        // Trouver la bonne réponse avant de cliquer sur les boutons
+        if (question[leCompteur].result1 == true){
+            reponse = question[leCompteur].reponse1
+        } else if (question[leCompteur].result2 == true){
+            reponse = question[leCompteur].reponse2
+        } else if (question[leCompteur].result3 == true){
+            reponse = question[leCompteur].reponse3
+        } else if (question[leCompteur].result4 == true){
+            reponse = question[leCompteur].reponse4
+        }
+        //Afficher les différents éléments
+        compteurQuestion.textContent = leCompteur + 1 + "/ " + question.length
+        laQuestion.textContent = question[leCompteur].intitule
+        bouton_rep_1.textContent = question[leCompteur].reponse1
+        bouton_rep_2.textContent = question[leCompteur].reponse2
+        bouton_rep_3.textContent = question[leCompteur].reponse3
+        bouton_rep_4.textContent = question[leCompteur].reponse4
+
+        wrapperreponse.classList.remove('hide')
+        wrapperreponse.classList.add('wrapperButtonReponse')
+
+        for (let i = paragraphe_reponse.length-1;i > -1;){
+            paragraphe_reponse[i].classList.add('parahide')
+            paragraphe_reponse[i].classList.remove('parashow')
+
+            i = i-1
+        }
+        paragraphe_reponse = document.getElementsByClassName('parahide')
+    } else {
+        compteurQuestion.classList.remove('questionConteur')
+        compteurQuestion.classList.add('hide')
+
+        laQuestion.textContent = "Ton score est de : "
+        laReponse.textContent = score + "/" + question.length
+        let taunt:string = ""
+        if(score <= 1){
+            taunt = "Vraiment pas ouf"
+        }else if(score <= 3) {
+            taunt = "Tu peux mieux faire"
+        }else if(score == 4) {
+            taunt = "T'es chaud !"
+        }else if (score == 5) {
+            taunt = "T'es trop fort gg !"
+        }
+        leCommentaire.textContent = taunt
+        bouton_next_2.textContent = "Retour à l'accueil"
+    }
+
+    if(bouton_next && leCompteur >= question.length){
+        bouton_next.removeEventListener('click', fNext)
+        bouton_next.addEventListener('click', fAccueil)
+    }
+}
+
+function fAccueil() {
+    location.reload()
+}
+
+
