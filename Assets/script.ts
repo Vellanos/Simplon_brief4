@@ -20,7 +20,6 @@ let score: number = 0;
 if (bouton_accueil) {
     bouton_accueil.addEventListener('click', startQuizz)
 }
-
 if (bouton_rep_1) {
     bouton_rep_1.addEventListener('click', fReponse1)
 }
@@ -33,7 +32,6 @@ if (bouton_rep_3) {
 if (bouton_rep_4) {
     bouton_rep_4.addEventListener('click', fReponse4)
 }
-
 if (bouton_next) {
     bouton_next.addEventListener('click', fNext)
 }
@@ -61,6 +59,11 @@ function fReponse1 () {
     
 
 }
+
+//function test(result) {
+//    const x = question[leCompteur]
+//}
+
 
 function fReponse2 () {
     laQuestion.textContent = "La réponse est : "
