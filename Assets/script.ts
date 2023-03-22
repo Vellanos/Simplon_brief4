@@ -237,9 +237,6 @@ function startQuizz() {
 function fNext() {
 
     leCompteur = leCompteur + 1
-    console.log("test Next")
-    console.log(leCompteur)
-
 
     if (leCompteur < question.length) {
         // Trouver la bonne réponse avant de cliquer sur les boutons
@@ -292,12 +289,72 @@ function fNext() {
 
     if(bouton_next && leCompteur >= question.length){
         bouton_next.removeEventListener('click', fNext)
-        bouton_next.addEventListener('click', fAccueil)
+        bouton_next.addEventListener('click', ouvrirPopup)
     }
 }
 
-function fAccueil() {
-    location.reload()
+function ouvrirPopup(){
+    // Création de la popup + style
+    const popup = document.createElement("div");
+    popup.style.position = "fixed";
+    popup.style.top = "50%";
+    popup.style.left = "50%";
+    popup.style.transform = "translate(-50%, -50%)";
+    popup.style.width = "300px";
+    popup.style.height = "300px";
+    popup.style.backgroundColor = "black";
+    popup.style.color = "black";
+    popup.style.border = "1px solid red";
+    popup.style.padding = "10px";
+    popup.style.display = "flex";
+    popup.style.flexDirection = "column"
+    popup.style.alignItems = "center";
+    popup.style.justifyContent = "center";
+    popup.style.textAlign = "center";
+    popup.style.gap = "20px";
+    
+
+    // Contenu de la popup
+    const titre = document.createElement("h2");
+    titre.textContent = "Merci d'avoir jouer !";
+    titre.style.margin = "0";
+    popup.appendChild(titre);
+
+
+    const message = document.createElement("p");
+    message.textContent = "Vous pouvez retrouver l'ensemble de ces séries sur l'application :";
+    message.style.margin = "0";
+
+    const lien = document.createElement("a");
+    lien.href = "https://www.netflix.com/"
+    lien.textContent = "NETFLIX";
+    lien.target = "_blank";
+    lien.style.border = "1px solid #black";
+    lien.style.backgroundColor = "black";
+    lien.style.color = "red";
+    lien.style.padding = "1%";
+    lien.style.fontSize = "30px";
+    popup.appendChild(message);
+    popup.appendChild(lien);
+
+    const bouton = document.createElement("button");
+    bouton.textContent = "Fermer";
+    bouton.style.backgroundColor = "#FFF"; 
+    bouton.style.fontSize = "30px";
+    bouton.style.marginTop ="3%";
+    bouton.addEventListener("click", function() {
+    popup.parentNode!.removeChild(popup);
+    });
+    popup.appendChild(bouton);
+
+    // Ajouter la popup au document
+    document.body.appendChild(popup);
+
+    //Dernière modification du bouton
+    bouton_next.removeEventListener('click', ouvrirPopup)
+    bouton_next.addEventListener('click', function fAccueil() {
+        location.reload()
+    })
 }
 
 
