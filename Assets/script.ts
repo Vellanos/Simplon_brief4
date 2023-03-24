@@ -1,18 +1,18 @@
-const accueil:Element | null = document.querySelector(".accueil")
-const bouton_accueil:HTMLButtonElement | null = document.querySelector("#buttonAccueil")
-const questionBloc :Element | null = document.querySelector(".question")
-const wrapperreponse :Element | null = document.querySelector("#wrapperButtonReponse")
-const compteurQuestion:Element | null = document.querySelector("#questionConteurId")
-const laQuestion :Element | null = document.querySelector("#laQuestionId")
-const bouton_rep_1:Element | null = document.querySelector("#buttonReponse1")
-const bouton_rep_2:Element | null = document.querySelector("#buttonReponse2")
-const bouton_rep_3:Element | null = document.querySelector("#buttonReponse3")
-const bouton_rep_4:Element | null = document.querySelector("#buttonReponse4")
-const bouton_next:Element | null = document.querySelector("#leNextId")
-const bouton_next_2:Element | null = document.querySelector("#leNextId > button")
-const laReponse:Element | null = document.querySelector("#laReponseId")
-const leCommentaire:Element | null = document.querySelector("#leCommentaireId")
-let paragraphe_reponse:HTMLCollectionOf<Element>= document.getElementsByClassName('parahide')
+const accueil: Element | null = document.querySelector(".accueil")
+const bouton_accueil: HTMLButtonElement | null = document.querySelector("#buttonAccueil")
+const questionBloc: Element | null = document.querySelector(".question")
+const wrapperreponse: Element | null = document.querySelector("#wrapperButtonReponse")
+const compteurQuestion: Element | null = document.querySelector("#questionConteurId")
+const laQuestion: Element | null = document.querySelector("#laQuestionId")
+const bouton_rep_1: Element | null = document.querySelector("#buttonReponse1")
+const bouton_rep_2: Element | null = document.querySelector("#buttonReponse2")
+const bouton_rep_3: Element | null = document.querySelector("#buttonReponse3")
+const bouton_rep_4: Element | null = document.querySelector("#buttonReponse4")
+const bouton_next: Element | null = document.querySelector("#leNextId")
+const bouton_next_2: Element | null = document.querySelector("#leNextId > button")
+const laReponse: Element | null = document.querySelector("#laReponseId")
+const leCommentaire: Element | null = document.querySelector("#leCommentaireId")
+let paragraphe_reponse: HTMLCollectionOf<Element> = document.getElementsByClassName('parahide')
 
 let leCompteur: number = 0;
 let reponse: string = '';
@@ -37,10 +37,10 @@ const question: quizz[] = [
         reponse2: 'Blacklist',
         reponse3: 'Lucifer',
         reponse4: 'Narcos',
-        result1:false,
-        result2:true,
-        result3:false,
-        result4:false
+        result1: false,
+        result2: true,
+        result3: false,
+        result4: false
     },
     { // 2eme question
         intitule: 'Dans la série Netflix "Vikings", combien de fils Ragnar Lothbrok a-t-il ?',
@@ -48,10 +48,10 @@ const question: quizz[] = [
         reponse2: 'Trois',
         reponse3: 'Quatre',
         reponse4: 'Cinq',
-        result1:false,
-        result2:false,
-        result3:true,
-        result4:false
+        result1: false,
+        result2: false,
+        result3: true,
+        result4: false
     },
     { // 3eme question
         intitule: "Dans quelle série Netflix les derniers survivants de l'humanité vivent-ils à bord d'un train en mouvement perpétuel, parcourant le globe après qu'une catastrophe climatique ait glacé la planète entière ?",
@@ -59,10 +59,10 @@ const question: quizz[] = [
         reponse2: 'Stranger Things',
         reponse3: 'The Umbrella Academy',
         reponse4: 'Altered Carbon',
-        result1:true,
-        result2:false,
-        result3:false,
-        result4:false
+        result1: true,
+        result2: false,
+        result3: false,
+        result4: false
     },
     { // 4eme question
         intitule: "Dans quelle série Netflix chaque épisode présente une histoire indépendante, explorant les aspects les plus sombres et les plus inquiétants de la technologie moderne et de la société ?",
@@ -70,10 +70,10 @@ const question: quizz[] = [
         reponse2: 'Altered Carbon',
         reponse3: "Perdu dans l'espace",
         reponse4: 'The Billion Dollar Code',
-        result1:true,
-        result2:false,
-        result3:false,
-        result4:false
+        result1: true,
+        result2: false,
+        result3: false,
+        result4: false
     },
     { // 5eme question
         intitule: "Dans quelle série de Netflix voyons-nous les aventures d'un explorateur dans la cour impériale de Kubilai Khan, qui a fondé la dynastie mongole des Yuan en Chine  ?",
@@ -81,10 +81,10 @@ const question: quizz[] = [
         reponse2: 'The Last Kingdom',
         reponse3: 'The Crown',
         reponse4: 'Marco Polo',
-        result1:false,
-        result2:false,
-        result3:false,
-        result4:true
+        result1: false,
+        result2: false,
+        result3: false,
+        result4: true
     }
 ]
 
@@ -106,14 +106,14 @@ if (bouton_rep_4) {
 }
 if (bouton_next && leCompteur <= question.length) {
     bouton_next.addEventListener('click', fNext)
-} 
+}
 
 
-function fReponse1 () {
+function fReponse1() {
     laQuestion.textContent = "La réponse est : "
     laReponse.textContent = reponse
 
-    if (question[leCompteur].result1 == true){
+    if (question[leCompteur].result1 == true) {
         score = score + 1
         leCommentaire.textContent = "Nice ! C'est la bonne réponse"
     } else {
@@ -123,21 +123,21 @@ function fReponse1 () {
     wrapperreponse.classList.add('hide')
     wrapperreponse.classList.remove('wrapperButtonReponse')
 
-    for (let i = paragraphe_reponse.length-1;i > -1;){
+    for (let i = paragraphe_reponse.length - 1; i > -1;) {
         paragraphe_reponse[i].classList.add('parashow')
         paragraphe_reponse[i].classList.remove('parahide')
-        i = i-1
+        i = i - 1
     }
     paragraphe_reponse = document.getElementsByClassName('parashow')
-    
+
 
 }
 
-function fReponse2 () {
+function fReponse2() {
     laQuestion.textContent = "La réponse est : "
     laReponse.textContent = reponse
 
-    if (question[leCompteur].result2 == true){
+    if (question[leCompteur].result2 == true) {
         score = score + 1
         leCommentaire.textContent = "Nice ! C'est la bonne réponse"
     } else {
@@ -147,20 +147,20 @@ function fReponse2 () {
     wrapperreponse.classList.add('hide')
     wrapperreponse.classList.remove('wrapperButtonReponse')
 
-    for (let i = paragraphe_reponse.length-1;i > -1;){
+    for (let i = paragraphe_reponse.length - 1; i > -1;) {
         paragraphe_reponse[i].classList.add('parashow')
         paragraphe_reponse[i].classList.remove('parahide')
-        i = i-1
+        i = i - 1
     }
     paragraphe_reponse = document.getElementsByClassName('parashow')
-    
+
 }
 
-function fReponse3 () {
+function fReponse3() {
     laQuestion.textContent = "La réponse est : "
     laReponse.textContent = reponse
 
-    if (question[leCompteur].result3 == true){
+    if (question[leCompteur].result3 == true) {
         score = score + 1
         leCommentaire.textContent = "Nice ! C'est la bonne réponse"
     } else {
@@ -170,19 +170,19 @@ function fReponse3 () {
     wrapperreponse.classList.add('hide')
     wrapperreponse.classList.remove('wrapperButtonReponse')
 
-    for (let i = paragraphe_reponse.length-1;i > -1;){
+    for (let i = paragraphe_reponse.length - 1; i > -1;) {
         paragraphe_reponse[i].classList.add('parashow')
         paragraphe_reponse[i].classList.remove('parahide')
-        i = i-1
+        i = i - 1
     }
     paragraphe_reponse = document.getElementsByClassName('parashow')
 }
 
-function fReponse4 () {
+function fReponse4() {
     laQuestion.textContent = "La réponse est : "
     laReponse.textContent = reponse
 
-    if (question[leCompteur].result4 == true){
+    if (question[leCompteur].result4 == true) {
         score = score + 1
         leCommentaire.textContent = "Nice ! C'est la bonne réponse"
     } else {
@@ -192,10 +192,10 @@ function fReponse4 () {
     wrapperreponse.classList.add('hide')
     wrapperreponse.classList.remove('wrapperButtonReponse')
 
-    for (let i = paragraphe_reponse.length-1;i > -1;){
+    for (let i = paragraphe_reponse.length - 1; i > -1;) {
         paragraphe_reponse[i].classList.add('parashow')
         paragraphe_reponse[i].classList.remove('parahide')
-        i = i-1
+        i = i - 1
     }
     paragraphe_reponse = document.getElementsByClassName('parashow')
 }
@@ -214,13 +214,13 @@ function startQuizz() {
     score = 0
 
     // Trouver la bonne réponse
-    if (question[leCompteur].result1 == true){
+    if (question[leCompteur].result1 == true) {
         reponse = question[leCompteur].reponse1
-    } else if (question[leCompteur].result2 == true){
+    } else if (question[leCompteur].result2 == true) {
         reponse = question[leCompteur].reponse2
-    } else if (question[leCompteur].result3 == true){
+    } else if (question[leCompteur].result3 == true) {
         reponse = question[leCompteur].reponse3
-    } else if (question[leCompteur].result4 == true){
+    } else if (question[leCompteur].result4 == true) {
         reponse = question[leCompteur].reponse4
     }
 
@@ -240,13 +240,13 @@ function fNext() {
 
     if (leCompteur < question.length) {
         // Trouver la bonne réponse avant de cliquer sur les boutons
-        if (question[leCompteur].result1 == true){
+        if (question[leCompteur].result1 == true) {
             reponse = question[leCompteur].reponse1
-        } else if (question[leCompteur].result2 == true){
+        } else if (question[leCompteur].result2 == true) {
             reponse = question[leCompteur].reponse2
-        } else if (question[leCompteur].result3 == true){
+        } else if (question[leCompteur].result3 == true) {
             reponse = question[leCompteur].reponse3
-        } else if (question[leCompteur].result4 == true){
+        } else if (question[leCompteur].result4 == true) {
             reponse = question[leCompteur].reponse4
         }
         //Afficher les différents éléments
@@ -260,11 +260,11 @@ function fNext() {
         wrapperreponse.classList.remove('hide')
         wrapperreponse.classList.add('wrapperButtonReponse')
 
-        for (let i = paragraphe_reponse.length-1;i > -1;){
+        for (let i = paragraphe_reponse.length - 1; i > -1;) {
             paragraphe_reponse[i].classList.add('parahide')
             paragraphe_reponse[i].classList.remove('parashow')
 
-            i = i-1
+            i = i - 1
         }
         paragraphe_reponse = document.getElementsByClassName('parahide')
     } else {
@@ -273,27 +273,27 @@ function fNext() {
 
         laQuestion.textContent = "Ton score est de : "
         laReponse.textContent = score + "/" + question.length
-        let taunt:string = ""
-        if(score <= 1){
+        let taunt: string = ""
+        if (score <= 1) {
             taunt = "Vraiment pas ouf"
-        }else if(score <= 3) {
+        } else if (score <= 3) {
             taunt = "Tu peux mieux faire"
-        }else if(score == 4) {
+        } else if (score == 4) {
             taunt = "T'es chaud !"
-        }else if (score == 5) {
+        } else if (score == 5) {
             taunt = "T'es trop fort gg !"
         }
         leCommentaire.textContent = taunt
         bouton_next_2.textContent = "Retour à l'accueil"
     }
 
-    if(bouton_next && leCompteur >= question.length){
+    if (bouton_next && leCompteur >= question.length) {
         bouton_next.removeEventListener('click', fNext)
         bouton_next.addEventListener('click', ouvrirPopup)
     }
 }
 
-function ouvrirPopup(){
+function ouvrirPopup() {
     // Création de la popup + style
     const popup = document.createElement("div");
     popup.style.position = "fixed";
@@ -312,7 +312,7 @@ function ouvrirPopup(){
     popup.style.justifyContent = "center";
     popup.style.textAlign = "center";
     popup.style.gap = "20px";
-    
+
 
     // Contenu de la popup
     const titre = document.createElement("h2");
@@ -339,11 +339,11 @@ function ouvrirPopup(){
 
     const bouton = document.createElement("button");
     bouton.textContent = "Fermer";
-    bouton.style.backgroundColor = "#FFF"; 
+    bouton.style.backgroundColor = "#FFF";
     bouton.style.fontSize = "30px";
-    bouton.style.marginTop ="3%";
-    bouton.addEventListener("click", function() {
-    popup.parentNode!.removeChild(popup);
+    bouton.style.marginTop = "3%";
+    bouton.addEventListener("click", function () {
+        popup.parentNode!.removeChild(popup);
     });
     popup.appendChild(bouton);
 
@@ -351,8 +351,8 @@ function ouvrirPopup(){
     document.body.appendChild(popup);
 
     //Dernière modification du bouton
-    bouton_next.removeEventListener('click', ouvrirPopup)
-    bouton_next.addEventListener('click', function fAccueil() {
+    bouton_next?.removeEventListener('click', ouvrirPopup)
+    bouton_next?.addEventListener('click', function fAccueil() {
         location.reload()
     })
 }
